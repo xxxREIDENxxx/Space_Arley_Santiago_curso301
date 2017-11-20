@@ -26,13 +26,16 @@ public class Bala {
         this.x = x;
         this.y = y;
         /*
-        String path = "../imagenes/bala.png";  
+        String path = "../imagenes/bala.png";
         URL url = this.getClass().getResource(path);  
         ImageIcon icon = new ImageIcon(url);*/
+        ImageIcon imagen = new ImageIcon("img/bala2.png");
         
-        figura = new JLabel("ta");
-        figura.setSize(50, 20);
+        figura = new JLabel();
+       // figura.setText("hola");
+        figura.setSize(50, 50);
         figura.setLocation(x, y);
+        figura.setIcon(imagen);
         //figura.setIcon(icon);
     }
     

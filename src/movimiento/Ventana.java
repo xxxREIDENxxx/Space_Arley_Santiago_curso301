@@ -9,7 +9,12 @@ import Repositorios.Bala;
 import Repositorios.Hilo_Bala;
 import Repositorios.MovimientoCara;
 import Repositorios.disparoPajaro;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -18,12 +23,18 @@ import java.util.ArrayList;
 public class Ventana extends javax.swing.JFrame {
     
     ArrayList<Hilo_Bala> hilos;
+    
+    int y = 100;
+    int x = 100;
+    int inc = 10;
 
     /**
      * Creates new form Ventana
      */
     public Ventana() {
         initComponents();
+        //ImageIcon imagen = new ImageIcon("img/bala2.png");
+        //cañon.setIcon(imagen);
         hilos = new ArrayList<>();
     }
 
@@ -168,6 +179,8 @@ public class Ventana extends javax.swing.JFrame {
         //System.out.println(x+y);
         //System.out.println(evt.getKeyChar());
         if(evt.getKeyCode()==39){
+            this.x += this.inc;
+            this.repaint();
             x=x+15;
             if(x>450){
                 x=450;
@@ -175,6 +188,8 @@ public class Ventana extends javax.swing.JFrame {
             cara.setLocation(x, y);
         }
         if(evt.getKeyCode()==37){
+            this.x -= this.inc;
+            this.repaint();
             x=x-15;
             if(x<5){
                 x=5;
@@ -185,6 +200,10 @@ public class Ventana extends javax.swing.JFrame {
         if(evt.getKeyCode()==38){
             //disparoPajaro d = new disparoPajaro(cara,disparo);
             //d.start();
+            
+            this.y += this.inc;
+            this.repaint();
+            
             int posX = cara.getX();
             int posY = cara.getY();
             
@@ -233,6 +252,24 @@ public class Ventana extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formKeyPressed
 
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        
+        Toolkit t = Toolkit.getDefaultToolkit ();
+        Image imagen = t.getImage ("img/nave2.png");
+        
+        g.drawImage(imagen, this.x, this.y, this);
+        
+        //g.setColor(Color.yellow);
+        //g.drawOval(this.x, this.y, 50, 50);
+        
+        
+        
+    }
+
+    
+    
     /**
      * @param args the command line arguments
      */
