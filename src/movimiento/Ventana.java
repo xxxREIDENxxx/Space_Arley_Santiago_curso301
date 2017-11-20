@@ -197,7 +197,7 @@ public class Ventana extends javax.swing.JFrame {
             cara.setLocation(x, y);
         }
         
-        if(evt.getKeyCode()==38){
+        if(evt.getKeyCode() == 38){
             //disparoPajaro d = new disparoPajaro(cara,disparo);
             //d.start();
             
@@ -257,9 +257,9 @@ public class Ventana extends javax.swing.JFrame {
         super.paint(g);
         
         Toolkit t = Toolkit.getDefaultToolkit ();
-        Image imagen = t.getImage ("img/nave2.png");
-        
-        g.drawImage(imagen, this.x, this.y, this);
+        Image imagen = t.getImage ("img/nave.png");
+        System.out.println(imagen.getHeight(this)+" "+imagen.getWidth(this));
+        g.drawImage(imagen, 0, 100, this);
         
         //g.setColor(Color.yellow);
         //g.drawOval(this.x, this.y, 50, 50);

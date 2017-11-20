@@ -6,6 +6,8 @@
 package Repositorios;
 
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,6 +22,9 @@ public class Bala {
     int x;
     int y;
     
+    Toolkit t = Toolkit.getDefaultToolkit ();
+    Image imagen = t.getImage ("img/bala2.png");
+    
     JLabel figura;
 
     public Bala(int x, int y) {
@@ -33,7 +38,7 @@ public class Bala {
         
         figura = new JLabel();
        // figura.setText("hola");
-        figura.setSize(50, 50);
+        figura.setSize(30, 30);
         figura.setLocation(x, y);
         figura.setIcon(imagen);
         //figura.setIcon(icon);
@@ -49,6 +54,14 @@ public class Bala {
             return true;
         }
         return false;
+    }
+
+    public Image getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Image imagen) {
+        this.imagen = imagen;
     }
 
     public int getX() {
