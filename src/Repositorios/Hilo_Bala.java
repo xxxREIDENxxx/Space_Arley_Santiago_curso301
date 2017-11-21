@@ -16,14 +16,11 @@ public class Hilo_Bala extends Thread{
     
     Bala bala;
     
-    boolean vivo = true;
-    
     Ventana ventana;
 
     public Hilo_Bala(Bala b, Ventana v) {
         this.ventana = v;
         this.bala = b;
-        System.out.println("SE creo el hilo");
     }
 
     @Override
@@ -31,20 +28,22 @@ public class Hilo_Bala extends Thread{
         while(!this.bala.fueraPantalla()){
             try {
                 this.bala.avanzar();
+                         
+                ventana.repaint();
+                for(int i = 0; i < ventana.getAliens().size(); i++){
+                    if(bala.choque(ventana.getAliens().get(i)) == true){
+                        ventana.getAliens().remove(i);
+                        i--;
+                    }
+                }    
+                 
                 sleep(5);
             } catch (Exception e) {
             }
         }
+       
+        ventana.getHilos().remove(this);
         
-        ventana.remove(bala.getFigura());
-        ventana.repaint();
-        
-        vivo = false;
-        
-    }
-    
-    public boolean vivo(){
-        return vivo;
     }
 
     public Bala getBala() {

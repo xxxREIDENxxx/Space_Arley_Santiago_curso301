@@ -23,7 +23,7 @@ public class Bala {
     int y;
     
     Toolkit t = Toolkit.getDefaultToolkit ();
-    Image imagen = t.getImage ("img/bala2.png");
+    Image imagen = t.getImage ("img/bala3.png");
     
     JLabel figura;
 
@@ -47,6 +47,18 @@ public class Bala {
     public void avanzar(){
         y -= 1;
         figura.setLocation(x, y);
+        
+    }
+    
+    public boolean choque(Alien a){
+        if(x > a.getX() && x < a.getX()+a.getImagen().getWidth(figura) &&
+           y > a.getY() && y < a.getY()+a.getImagen().getHeight(figura)
+           ){
+            
+            return true;
+            
+        }
+        return false;
     }
     
     public boolean fueraPantalla(){
